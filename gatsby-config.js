@@ -20,14 +20,40 @@ module.exports = {
            path: `${__dirname}/src/posts/`,
          },
        },
+       'gatsby-remark-images',
        {
          resolve: 'gatsby-plugin-mdx',
          options: {
+          gatsbyRemarkPlugins: [
+              {
+                resolve: 'gatsby-remark-images',
+                options: {
+                  maxWidth: 1200,
+                },
+              },
+            ],
            defaultLayouts: {
              posts: require.resolve('./src/components/post-layout.js'),
            },
            parseFrontmatter: [`mdx`],
          },
        },
+       {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'images',
+          path: `${__dirname}/src/images/`,
+        },
+      },
+      'gatsby-transformer-sharp',
+      'gatsby-plugin-sharp',
+      'gatsby-plugin-image',
+       {
+        resolve: 'gatsby-source-sanity',
+        options: {
+          projectId: 'vnkupgyb',
+          dataset: 'production',
+        },
+      },
     ],
 }

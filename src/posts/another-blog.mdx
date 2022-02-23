@@ -3,10 +3,27 @@ title: another blog
 description: another blog description
 date: 2019-01-29
 ---
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { graphql } from 'gatsby';
+ export const query = graphql`
+   query SmashburgerQuery {
+     file(name: { eq: "smashburger" }) {
+       childImageSharp {
+         gatsbyImageData(placeholder: DOMINANT_COLOR)
+       }
+     }
+   }
+ `;
 
 # Another Blog
 this is my another blog
 
+  # Oh Dang
+
+ <GatsbyImage
+   image={getImage(props.data.file)}
+   alt="a smashburger on a plate with french fries in the foreground"
+ />
 
 # Hello, world!
 
